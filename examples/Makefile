@@ -21,7 +21,8 @@ all: simple_compression simple_decompression \
 	multiple_simple_compression\
 	dictionary_compression dictionary_decompression \
 	streaming_compression streaming_decompression \
-	multiple_streaming_compression streaming_memory_usage
+	multiple_streaming_compression streaming_memory_usage \
+	dictionary_trainer
 
 $(LIB) :
 	$(MAKE) -C $(LIBDIR) libzstd.a
@@ -52,6 +53,9 @@ streaming_decompression : $(LIB)
 
 streaming_memory_usage.o: common.h
 streaming_memory_usage : $(LIB)
+
+dictionary_trainer.o: common.h
+dictionary_trainer : $(LIB)
 
 
 .PHONY:clean
