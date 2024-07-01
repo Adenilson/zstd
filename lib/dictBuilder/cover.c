@@ -288,14 +288,12 @@ static int COVER_cmp8(COVER_ctx_t *ctx, const void *lp, const void *rp) {
 /**
  * Same as COVER_cmp() except ties are broken by pointer value
  */
-#if defined(_WIN32) && defined(_MSC_VER)
+#if (defined(_WIN32) && defined(_MSC_VER)) || defined(__APPLE__)
 static int WIN_CDECL COVER_strict_cmp(void* g_coverCtx, const void* lp, const void* rp) {
-#elif defined(__APPLE__)
-static int WIN_CDECL COVER_strict_cmp(void *g_coverCtx, const void *lp, const void *rp) {
 #elif defined(_GNU_SOURCE)
-static int WIN_CDECL COVER_strict_cmp(const void *lp, const void *rp, void *g_coverCtx) {
+static int COVER_strict_cmp(const void *lp, const void *rp, void *g_coverCtx) {
 #else /* C90 fallback.*/
-static int WIN_CDECL COVER_strict_cmp(const void *lp, const void *rp) {
+static int COVER_strict_cmp(const void *lp, const void *rp) {
 #endif
   int result = COVER_cmp((COVER_ctx_t*)g_coverCtx, lp, rp);
   if (result == 0) {
@@ -306,14 +304,12 @@ static int WIN_CDECL COVER_strict_cmp(const void *lp, const void *rp) {
 /**
  * Faster version for d <= 8.
  */
-#if defined(_WIN32) && defined(_MSC_VER)
+#if (defined(_WIN32) && defined(_MSC_VER)) || defined(__APPLE__)
 static int WIN_CDECL COVER_strict_cmp8(void* g_coverCtx, const void* lp, const void* rp) {
-#elif defined(__APPLE__)
-static int WIN_CDECL COVER_strict_cmp8(void *g_coverCtx, const void *lp, const void *rp) {
 #elif defined(_GNU_SOURCE)
-static int WIN_CDECL COVER_strict_cmp8(const void *lp, const void *rp, void *g_coverCtx) {
+static int COVER_strict_cmp8(const void *lp, const void *rp, void *g_coverCtx) {
 #else /* C90 fallback.*/
-static int WIN_CDECL COVER_strict_cmp8(const void *lp, const void *rp) {
+static int COVER_strict_cmp8(const void *lp, const void *rp) {
 #endif
   int result = COVER_cmp8((COVER_ctx_t*)g_coverCtx, lp, rp);
   if (result == 0) {
