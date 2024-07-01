@@ -22,7 +22,8 @@
 *  Dependencies
 ***************************************/
 /* qsort_r is an extension. */
-#if defined(__linux) || defined(__linux__) || defined(linux) || defined(__gnu_linux__) || defined(__CYGWIN__) || defined(__MSYS__)
+#if defined(__linux) || defined(__linux__) || defined(linux) || defined(__gnu_linux__) || \
+    defined(__CYGWIN__) || defined(__MSYS__)
 #if !defined(_GNU_SOURCE)
 #define _GNU_SOURCE
 #endif

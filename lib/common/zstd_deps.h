@@ -29,7 +29,8 @@
  * header and the script 'combine.sh' combines the whole zstd source code
  * in a single file.
  */
-#if defined(__linux) || defined(__linux__) || defined(linux) || defined(__gnu_linux__) || defined(__CYGWIN__) || defined(__MSYS__)
+#if defined(__linux) || defined(__linux__) || defined(linux) || defined(__gnu_linux__) || \
+    defined(__CYGWIN__) || defined(__MSYS__)
 #if !defined(_GNU_SOURCE)
 #define _GNU_SOURCE
 #endif
